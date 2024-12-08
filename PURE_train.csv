@@ -1,0 +1,4 @@
+,Requirement,Name of Doc,Req/Not Req
+0,The solution should provide detailed context-sensitive help material for all the possible actions and scenarios on all user interfaces in the application.,cctns.pdf,Req
+1,The help should be accessible to the users both in the offline and online mode.,cctns.pdf,Req
+7745,"DE-3: Management Processes interact with a patron interface, also known as an Online Public Access Catalog (OPAC).",2009 - library.doc,Not_Req
