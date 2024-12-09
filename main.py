@@ -2,12 +2,10 @@ import openai
 import pandas as pd
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
-# Set up your OpenAI API key
-openai.api_key = "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"
+
 # Load the test dataset
 test_data = pd.read_csv('PURE_test.csv')
 train_data = pd.read_csv('PURE_train.csv')
-
 
 # Function to classify a document
 def classify_document(document_text="", prompt = "", temperature_param=0, max_tokens_param = 4096):
@@ -15,7 +13,7 @@ def classify_document(document_text="", prompt = "", temperature_param=0, max_to
   response = openai.ChatCompletion.create(
     model="gpt-3.5-turbo",
     messages=[
-        {"role": "system", "content": prompt + " Below is a list of sentences. Please classify each one as True or False (whether it is a requirement). Respond in JSON format, like this: {\"sentence1\": True, \"sentence2\": False, ...}."},
+        {"role": "system", "content": prompt + ". Below is a list of sentences. Please classify each one as True or False (whether it is a requirement). Respond in JSON format, like this: {\"sentence1\": True, \"sentence2\": False, ...}."},
         {"role": "user", "content": document_text}
     ],
     temperature=temperature_param,
@@ -104,6 +102,7 @@ def evaluation(y_true, y_pred):
     }
 
 if __name__ == "__main__":
+  
   prompt = ""
   document_text = get_sentences(train_data)
   print(document_text)
